@@ -1,0 +1,16 @@
+br\ba\fvc\beans\UsuarioBean.class
+br\ba\fvc\mapeamento\Credor.class
+br\ba\fvc\dao\UsuarioDAO.class
+br\ba\fvc\mapeamento\Categoria.class
+br\ba\fvc\beans\LoginBean.class
+br\ba\fvc\util\Conexao.class
+br\ba\fvc\dao\BancoDAO.class
+br\ba\fvc\dao\ClienteDAO.class
+br\ba\fvc\dao\CredorDAO.class
+br\ba\fvc\mapeamento\Cliente.class
+br\ba\fvc\beans\CredorBean.class
+br\ba\fvc\mapeamento\Usuario.class
+Cobranca.class
+br\ba\fvc\beans\BancoBean.class
+br\ba\fvc\beans\ClienteBean.class
+br\ba\fvc\mapeamento\Banco.class

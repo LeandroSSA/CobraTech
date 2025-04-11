@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Cadastro de Credor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            width: 60%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            margin-bottom: 20px;
+        }
+
+        .form-grid td {
+            padding: 10px;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        table.data-table th, table.data-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        table.data-table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</h:head>
+<h:body>
+
+<div class="form-container">
+    <h2>Cadastro de Credores</h2>
+
+    <h:form>
+        <h:panelGrid columns="2" columnClasses="label,value" class="form-grid">
+            <h:outputLabel value="Nome:" />
+            <h:inputText value="#{credorBean.credor.nome}" />
+
+            <h:outputLabel value="CPF:" />
+            <h:inputText value="#{credorBean.credor.cpf}" />
+
+            <h:outputLabel value="CNPJ:" />
+            <h:inputText value="#{credorBean.credor.cnpj}" />
+
+            <h:outputLabel value="Telefone:" />
+            <h:inputText value="#{credorBean.credor.telefone}" />
+
+            <h:outputLabel value="Email:" />
+            <h:inputText value="#{credorBean.credor.email}" />
+        </h:panelGrid>
+
+        <div class="btn-group">
+            <h:commandButton value="Cadastrar" action="#{credorBean.cadastrar}" styleClass="btn"/>
+            <h:commandButton value="Alterar" action="#{credorBean.alterar}" styleClass="btn"/>
+            <h:commandButton value="Excluir" action="#{credorBean.excluir}" styleClass="btn"/>
+            <h:commandButton value="Consultar" action="#{credorBean.carregarLista}" styleClass="btn"/>
+            <h:link outcome="/Telas/home" value="Voltar" styleClass="btn"/>
+        </div>
+
+        <h:dataTable value="#{credorBean.lista}" var="c" class="data-table">
+            <h:column>
+                <f:facet name="header">Código</f:facet>
+                #{c.codigo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome</f:facet>
+                #{c.nome}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CPF</f:facet>
+                #{c.cpf}
+            </h:column>
+            <h:column>
+                <f:facet name="header">CNPJ</f:facet>
+                #{c.cnpj}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Telefone</f:facet>
+                #{c.telefone}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Email</f:facet>
+                #{c.email}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Selecionar</f:facet>
+                <h:commandButton value="Selecionar" action="#{credorBean.selecionar(c)}" styleClass="btn" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</div>
+
+</h:body>
+</html>

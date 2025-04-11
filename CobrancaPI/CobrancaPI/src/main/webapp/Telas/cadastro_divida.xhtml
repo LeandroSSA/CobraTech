@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Cadastro de Dívida</title>
+</h:head>
+
+<h:body style="background-color: #f5f5f5; color: #000000;">
+
+    <h:form>
+
+        <p:panel header="Cadastro de Dívida" style="width: 600px; margin: auto;">
+
+            <!-- Linha de busca -->
+            <p:panelGrid columns="5" style="margin-bottom: 10px;" columnClasses="label, input, button, button, button">
+                <h:outputLabel value="Digite o Código:" />
+                <p:inputText value="#{dividaBean.codigoBusca}" style="width: 100px;" />
+                <p:commandButton value="Localizar" icon="pi pi-search" actionListener="#{dividaBean.localizar}" update="@form"/>
+                <p:commandButton value="Lista" icon="pi pi-list" actionListener="#{dividaBean.listar}" update="@form"/>
+            </p:panelGrid>
+
+            <!-- Informações da dívida -->
+            <p:panelGrid columns="2" columnClasses="label, input" styleClass="form-grid" style="width: 100%;">
+
+                <h:outputLabel value="Código:" />
+                <p:inputText value="#{dividaBean.divida.codigo}" disabled="true"/>
+
+                <h:outputLabel value="Devedor:" />
+                <p:inputText value="#{dividaBean.divida.devedor}" />
+
+                <h:outputLabel value="Credor:" />
+                <p:selectOneMenu value="#{dividaBean.divida.credor}">
+                    <f:selectItem itemLabel="Selecione" itemValue="" />
+                    <f:selectItems value="#{dividaBean.listaCredores}" />
+                </p:selectOneMenu>
+
+                <h:outputLabel value="Descrição:" />
+                <p:inputText value="#{dividaBean.divida.descricao}" style="width: 100%;" />
+
+                <h:outputLabel value="Vencimento:" />
+                <p:calendar value="#{dividaBean.divida.vencimento}" pattern="dd/MM/yyyy" />
+
+                <h:outputLabel value="Valor:" />
+                <p:inputText value="#{dividaBean.divida.valor}" />
+
+                <h:outputLabel value="Código da Dívida:" />
+                <p:inputText value="#{dividaBean.divida.codigoDivida}" />
+
+                <h:outputLabel />
+                <p:selectBooleanCheckbox value="#{dividaBean.divida.paga}" itemLabel="Esta Paga?" />
+            </p:panelGrid>
+
+            <!-- Botões -->
+            <p:panelGrid columns="4" style="text-align:center; margin-top:10px;">
+                <p:commandButton value="Incluir" action="#{dividaBean.incluir}" update="@form" icon="pi pi-plus" />
+                <p:commandButton value="Consultar" action="#{dividaBean.consultar}" update="@form" icon="pi pi-search" />
+                <p:commandButton value="Alterar" action="#{dividaBean.alterar}" update="@form" icon="pi pi-pencil" />
+                <p:commandButton value="Excluir" action="#{dividaBean.excluir}" update="@form" icon="pi pi-trash" />
+            </p:panelGrid>
+
+            <!-- Tabela -->
+            <p:dataTable value="#{dividaBean.listaDividas}" var="d" style="margin-top:20px;">
+                <p:column headerText="Cliente">
+                    <h:outputText value="#{d.devedor}" />
+                </p:column>
+                <p:column headerText="Descrição">
+                    <h:outputText value="#{d.descricao}" />
+                </p:column>
+                <p:column headerText="Vencimento">
+                    <h:outputText value="#{d.vencimento}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+                <p:column headerText="Valor">
+                    <h:outputText value="#{d.valor}" />
+                </p:column>
+                <p:column headerText="Pago">
+                    <h:outputText value="#{d.paga ? 'Sim' : 'Não'}" />
+                </p:column>
+            </p:dataTable>
+
+        </p:panel>
+
+    </h:form>
+</h:body>
+</html>
+

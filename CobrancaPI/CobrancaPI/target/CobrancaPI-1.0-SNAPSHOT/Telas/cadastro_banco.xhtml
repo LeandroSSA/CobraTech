@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>Cadastro de Banco</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            width: 60%;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            margin-bottom: 20px;
+        }
+
+        .form-grid td {
+            padding: 10px;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 18px;
+            border: none;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        table.data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        table.data-table th, table.data-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        table.data-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .botao:hover {
+            background-color: #0056b3;
+        }
+        
+        .link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+             }
+    </style>
+</h:head>
+<h:body>
+
+<div class="form-container">
+    <h2>Cadastro de Banco</h2>
+
+    <h:form>
+        <h:panelGrid columns="2" columnClasses="label,value" class="form-grid">
+            <h:outputLabel value="Código do Banco:"/>
+            <h:inputText value="#{bancoBean.banco.codigoDoBanco}" />
+
+            <h:outputLabel value="Nome do Banco:"/>
+            <h:inputText value="#{bancoBean.banco.nomeDoBanco}" />
+
+            <h:outputLabel value="Nome da Agência:"/>
+            <h:inputText value="#{bancoBean.banco.nomeDaAgencia}" />
+
+            <h:outputLabel value="Número da Agência:"/>
+            <h:inputText value="#{bancoBean.banco.numeroDaAgencia}" />
+
+            <h:outputLabel value="Número da Conta:"/>
+            <h:inputText value="#{bancoBean.banco.numeroDaConta}" />
+        </h:panelGrid>
+
+        <div class="btn-group">
+            <h:commandButton value="Cadastrar" action="#{bancoBean.cadastrar}" styleClass="btn"/>
+            <h:commandButton value="Alterar" action="#{bancoBean.alterar}" styleClass="btn"/>
+            <h:commandButton value="Excluir" action="#{bancoBean.excluir}" styleClass="btn"/>
+            <h:commandButton value="Consultar" action="#{bancoBean.carregarLista}" styleClass="btn"/>
+            <h:link outcome="/Telas/home" value="Voltar" styleClass="btn" />
+        </div>
+
+        <h:dataTable value="#{bancoBean.lista}" var="b" class="data-table">
+            <h:column>
+                <f:facet name="header">Código</f:facet>
+                #{b.codigo}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Código Banco</f:facet>
+                #{b.codigoDoBanco}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome Banco</f:facet>
+                #{b.nomeDoBanco}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Nome Agência</f:facet>
+                #{b.nomeDaAgencia}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Número Agência</f:facet>
+                #{b.numeroDaAgencia}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Número Conta</f:facet>
+                #{b.numeroDaConta}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Selecionar</f:facet>
+                <h:commandButton value="Selecionar" action="#{bancoBean.selecionar(b)}" styleClass="btn" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+</div>
+
+</h:body>
+</html>

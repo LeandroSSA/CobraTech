@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
+-->
+
+<!DOCTYPE html>
+<html 
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>Home - Sistema de Cobrança</title>
+</h:head>
+
+<h:body>
+    <h:form>
+
+        <!-- Barra de Menu -->
+        <p:menubar>
+            <p:menuitem outcome="home" icon="pi pi-home"/>
+           
+            <p:submenu label="Administrativo" icon="pi pi-user-plus">
+                <p:menuitem value="Usuario" outcome="cadastro_usuario" icon="pi pi-users"/>
+            </p:submenu>
+            
+           <p:submenu label="Cadastros" icon="pi pi-user-plus">
+                <p:menuitem value="Banco" outcome="cadastro_banco" icon="pi pi-users"/>
+                <p:menuitem value="Clientes" outcome="cadastro_cliente" icon="pi pi-users"/>
+                <p:menuitem value="Credor" outcome="cadastro_credores" icon="pi pi-users"/>
+                <p:menuitem value="Divida" outcome="cadastro_divida" icon="pi pi-users"/>
+           </p:submenu>
+            
+            <p:menuitem value="Cobranças" outcome="Cobranças" icon="pi pi-dollar"/>
+            <p:menuitem value="Relatórios" outcome="Relatórios" icon="pi pi-chart-bar"/>
+            <p:menuitem value="Sair" outcome="Login" icon="pi pi-sign-out"/>
+        </p:menubar>
+
+        <!-- LOGO Centralizada -->
+        <div style="text-align: center; margin-top: 30px;">
+            <img src="Resources/Imagens/logo.png" alt="Logo" />
+        </div>
+
+        <!-- Conteúdo da Página -->
+        <h1 style="margin-top: 20px; text-align: center;">Bem-vindo ao Sistema de Cobrança!</h1>
+        <h:outputText value="Selecione uma opção no menu acima para começar." style="display: block; text-align: center;" />
+
+    </h:form>
+</h:body>
+</html>
+
